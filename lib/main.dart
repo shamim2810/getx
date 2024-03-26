@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx/counter_controller.dart';
 import 'package:getx/home_screen.dart';
 
 void main() {
@@ -12,7 +13,17 @@ class CounterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: HomeScreen(),
+      home: const HomeScreen(),
+      initialBinding: ControllerBinder(),
     );
   }
+}
+
+class ControllerBinder extends  Bindings{
+  @override
+  void dependencies() {
+    //Get.put(CounterController());
+    Get.lazyPut(() => CounterController());
+  }
+
 }
